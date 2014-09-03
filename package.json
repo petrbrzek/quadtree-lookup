@@ -1,8 +1,11 @@
 {
-  "name": "generic-quadtree",
+  "name": "quadtree-lookup",
   "description": "a generic quadtree for quick range lookup",
   "author": "John Doty <jrhdoty@gmail.com>",
-  "version": "1.1.0",
+  "contributors": [
+    "Petr Brzek <petrbrzek@abdoc.net> (https://github.com/petrbrzek)"
+  ],
+  "version": "2.0.0",
   "main": "./Quadtree/quadtree.js",
   "scripts": {
     "test": "mocha"
@@ -20,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jrhdoty/generic-quadtree.git"
+    "url": "https://github.com/petrbrzek/generic-quadtree.git"
   },
-  "bugs": "https://github.com/jrhdoty/generic-quadtree/issues"
+  "bugs": "https://github.com/petrbrzek/generic-quadtree/issues"
 }

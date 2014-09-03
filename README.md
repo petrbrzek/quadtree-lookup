@@ -1,9 +1,10 @@
 generic-quadtree
 ================
 [![Build Status](https://travis-ci.org/jrhdoty/generic-quadtree.svg?branch=master)](https://travis-ci.org/jrhdoty/generic-quadtree)
-## Description
 
-This fork adds support for inserting boxes.
+## This fork adds support for inserting boxes.
+
+## Description
 
 Generic-Quadtree is a node module that implements a quadtree for storing key-value pairs where the keys are two dimensional values.
 

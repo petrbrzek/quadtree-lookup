@@ -1,4 +1,4 @@
-generic-quadtree
+quadtree-lookup
 ================
 [![Build Status](https://travis-ci.org/jrhdoty/generic-quadtree.svg?branch=master)](https://travis-ci.org/jrhdoty/generic-quadtree)
 
@@ -6,7 +6,7 @@ generic-quadtree
 
 ## Description
 
-Generic-Quadtree is a node module that implements a quadtree for storing key-value pairs where the keys are two dimensional values.
+Quadtree-lookup is a node module that implements a quadtree for storing key-value pairs where the keys are two dimensional values.
 
 It is optimized for performing lookup of values in a specified range.
 

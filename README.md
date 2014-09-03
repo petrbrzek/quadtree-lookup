@@ -2,7 +2,7 @@ generic-quadtree
 ================
 [![Build Status](https://travis-ci.org/jrhdoty/generic-quadtree.svg?branch=master)](https://travis-ci.org/jrhdoty/generic-quadtree)
 
-## This fork adds support for inserting boxes.
+### This fork adds support for inserting boxes.
 
 ## Description
 
@@ -34,10 +34,10 @@ tree.insert(box, item);
 var range = new Box(new Point(10, 10), new Point(40, 40));
 var itemsInRange = tree.queryRange(range); //returns [{box: position; value: item}]
 
-//get value if quadtree contains an item at point
-tree.queryBox(position); //returns 'value'
+//get value if quadtree contains the box
+tree.queryBox(box); //returns 'value'
 
-//remove point from tree
+//remove box from tree
 tree.removeBox(position); //tree is now empty
 
 //clear all internal nodes and values

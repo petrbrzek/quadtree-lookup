@@ -38,7 +38,7 @@ var itemsInRange = tree.queryRange(range); //returns [{box: position; value: ite
 tree.queryBox(box); //returns 'value'
 
 //remove box from tree
-tree.removeBox(position); //tree is now empty
+tree.removeBox(box); //tree is now empty
 
 //clear all internal nodes and values
 tree.clear();

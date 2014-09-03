@@ -121,17 +121,16 @@ Quadtree.prototype.queryBox = function(box) {
 
 Quadtree.prototype.removeBox = function(box) {
     //return if tree doesn't contain the box
-    if (!this.box.contains(box)) {
+    if (!this.box.overlaps(box)) {
         return null;
     }
-
     var i = null;
     var len = this.value.length;
     if (len > 0) {
         for (i = 0; i < len; i++) {
             if (this.value[i].box.equals(box)) {
                 this.value.splice(i, 1);
-                return;
+                return null;
             }
         }
         return null;

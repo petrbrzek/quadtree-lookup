@@ -8,7 +8,7 @@ var Quadtree = function(box, max) {
 };
 
 Quadtree.prototype.insert = function(box, object) {
-    //check if it contains box
+    //check if it overlaps
     if (!this.box.overlaps(box)) {
         return this;
     }
@@ -161,26 +161,18 @@ var Box = function(least, greatest) {
     this.high = greatest;
 };
 
-//return true if box contains point
-Box.prototype.contains = function(point) {
-    if (this.low.lte(point) && this.high.gte(point) || this.low.gte(point) && this.high.lte(point)) {
-        return true;
-    }
-    return false;
-};
-
 Box.prototype.equals = function(box) {
     return (this.low.x === box.low.x && this.low.y === box.low.y && this.high.x === box.high.x && this.high.y === box.high.y);
 };
 
 //return true if overlap of boxes
 Box.prototype.overlaps = function(box) {
-    //if this contains either point of box, then there is an overlap
-    if (this.contains(box.low) || this.contains(box.high) ||
-        box.contains(this.low) || box.contains(this.high)) {
-        return true;
-    }
-    return false;
+    if (this.high.x < box.low.x) return false
+    if (this.low.x > box.high.x) return false
+    if (this.high.y < box.low.y) return false
+    if (this.low.y > box.high.y) return false
+
+    return true
 };
 
 //return array of children
@@ -199,27 +191,6 @@ Box.prototype.split = function() {
 var Point = function(x, y) {
     this.x = x;
     this.y = y;
-};
-
-//less than or equal to in both dimensions
-Point.prototype.lte = function(point) {
-    if (this.x <= point.x && this.y <= point.y) {
-        return true;
-    }
-    return false;
-};
-
-//greater than or equal to in both dimensions
-Point.prototype.gte = function(point) {
-    if (this.x >= point.x && this.y >= point.y) {
-        return true;
-    }
-    return false;
-};
-
-//return true if points are equal in both dimensions
-Point.prototype.equals = function(point) {
-    return (this.x === point.x && this.y === point.y);
 };
 
 //make compatible with use in browser

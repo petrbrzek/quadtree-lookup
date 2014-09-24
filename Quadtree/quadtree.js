@@ -7,7 +7,7 @@ var Quadtree = function(box, max) {
     this.max = max || 10; //max points per node
 };
 
-Quadtree.prototype.insert = function(box, object) {
+Quadtree.prototype.insert = function(box, object, flag) {
     //check if it overlaps
     if (!this.box.overlaps(box)) {
         return this;
@@ -16,7 +16,7 @@ Quadtree.prototype.insert = function(box, object) {
     //if it is a leaf node and is not full then insert
     var i = null;
     var len = this.value.length;
-    if (this.children === null && len < this.max) {
+    if (this.children === null && len < this.max || flag) {
         this.value.push({
             box: box,
             value: object
@@ -32,7 +32,7 @@ Quadtree.prototype.insert = function(box, object) {
     //if it is not a leaf node, call insert on child nodes
     len = this.children.length;
     for (i = 0; i < len; i++) {
-        this.children[i].insert(box, object);
+        this.children[i].insert(box, object, true);
     }
 
     // fastest clear array method

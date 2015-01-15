@@ -156,9 +156,10 @@ Quadtree.prototype.clear = function() {
 
 
 //generalized box class, defined by two points with lessThan (lte) and greaterThan (gte) functions
-var Box = function(least, greatest) {
+var Box = function(least, greatest, shouldContain) {
     this.low = least;
     this.high = greatest;
+    this.shouldContain = shouldContain;
 };
 
 Box.prototype.equals = function(box) {
@@ -167,12 +168,28 @@ Box.prototype.equals = function(box) {
 
 //return true if overlap of boxes
 Box.prototype.overlaps = function(box) {
-    if (this.high.x < box.low.x) return false
-    if (this.low.x > box.high.x) return false
-    if (this.high.y < box.low.y) return false
-    if (this.low.y > box.high.y) return false
+    if (this.shouldContain) {
+      if (this.high.x < box.low.x) return false
+      if (this.high.x < box.high.x) return false
 
-    return true
+      if (this.low.x > box.low.x) return false
+      if (this.low.x > box.high.x) return false
+
+      if (this.high.y < box.low.y) return false
+      if (this.high.y < box.high.y) return false
+
+      if (this.low.y > box.high.y) return false
+      if (this.low.y > box.low.y) return false
+
+      return true
+    } else {
+      if (this.high.x < box.low.x) return false
+      if (this.low.x > box.high.x) return false
+      if (this.high.y < box.low.y) return false
+      if (this.low.y > box.high.y) return false
+
+      return true
+    }
 };
 
 //return array of children
